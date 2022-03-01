@@ -3,15 +3,16 @@ import java.util.Scanner;
 public class EnigmaPrototype {
 
   int number;
+  char c;
 
   public static void main(String[] args) {
     EnigmaPrototype demo = new EnigmaPrototype();
-    demo.LetterValues(0);
+    demo.LetterValues1(0);
+    demo.LetterValues2('A');
     demo.userInput();
-
   }
 
-  public char LetterValues(int number) {
+  public char LetterValues1(int number) {
     if (number == 0) {
       return ' ';
     } else if (number == 1) {
@@ -73,14 +74,82 @@ public class EnigmaPrototype {
     } else if (number == 29) {
       return 'Å';
     } else
-    return '?';
+      return '?';
   }
 
+  public int LetterValues2(char c) {
+    if (c == ' ') {
+      return 0;
+    } else if (c == 'A') {
+      return 1;
+    } else if (c == 'B') {
+      return 2;
+    } else if (c == 'C') {
+      return 3;
+    } else if (c == 'D') {
+      return 4;
+    } else if (c == 'E') {
+      return 5;
+    } else if (c == 'F') {
+      return 6;
+    } else if (c == 'G') {
+      return 7;
+    } else if (c == 'H') {
+      return 8;
+    } else if (c == 'I') {
+      return 9;
+    } else if (c == 'J') {
+      return 10;
+    } else if (c == 'K') {
+      return 11;
+    } else if (c == 'L') {
+      return 12;
+    } else if (c == 'M') {
+      return 13;
+    } else if (c == 'N') {
+      return 14;
+    } else if (c == 'O') {
+      return 15;
+    } else if (c == 'P') {
+      return 16;
+    } else if (c == 'Q') {
+      return 17;
+    } else if (c == 'R') {
+      return 18;
+    } else if (c == 'S') {
+      return 19;
+    } else if (c == 'T') {
+      return 20;
+    } else if (c == 'U') {
+      return 21;
+    } else if (c == 'V') {
+      return 22;
+    } else if (c == 'W') {
+      return 23;
+    } else if (c == 'X') {
+      return 24;
+    } else if (c == 'Y') {
+      return 25;
+    } else if (c == 'Z') {
+      return 26;
+    } else if (c == 'Æ') {
+      return 27;
+    } else if (c == 'Ø') {
+      return 28;
+    } else if (c == 'Å') {
+      return 29;
+    } else
+      return '?';
+
+  }
   public void userInput() {
     Scanner scanner = new Scanner(System.in);
     System.out.print("Enter number from 0-29: ");
     number = scanner.nextInt();
-    System.out.print(LetterValues(number));
-
+    System.out.print(LetterValues1(number));
+    scanner.nextLine();
+    System.out.print("\nEnter a letter: ");
+    c = scanner.nextLine().charAt(0);
+    System.out.print(LetterValues2(c));
   }
 }
