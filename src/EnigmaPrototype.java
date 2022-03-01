@@ -12,6 +12,7 @@ public class EnigmaPrototype {
     demo.userInput();
   }
 
+  //Figures the letter of the value
   public char LetterValues1(int number) {
     if (number == 0) {
       return ' ';
@@ -76,7 +77,7 @@ public class EnigmaPrototype {
     } else
       return '?';
   }
-
+  //Figures the value of the letter
   public int LetterValues2(char c) {
     if (c == ' ') {
       return 0;
@@ -142,12 +143,15 @@ public class EnigmaPrototype {
       return '?';
 
   }
+
   public void userInput() {
     Scanner scanner = new Scanner(System.in);
+    //Prints the letter of the value
     System.out.print("Enter number from 0-29: ");
     number = scanner.nextInt();
     System.out.print(LetterValues1(number));
     scanner.nextLine();
+    //Prints the value of the letter
     System.out.print("\nEnter a letter: ");
     c = scanner.nextLine().charAt(0);
     System.out.print(LetterValues2(c));
