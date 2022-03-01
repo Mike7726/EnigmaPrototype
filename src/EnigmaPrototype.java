@@ -7,13 +7,13 @@ public class EnigmaPrototype {
 
   public static void main(String[] args) {
     EnigmaPrototype demo = new EnigmaPrototype();
-    demo.LetterValues1(0);
-    demo.LetterValues2('A');
+    demo.letterToValue(0);
+    demo.valueToLetter('A');
     demo.userInput();
   }
 
   //Figures the letter of the value
-  public char LetterValues1(int number) {
+  public char letterToValue(int number) {
     if (number == 0) {
       return ' ';
     } else if (number == 1) {
@@ -78,7 +78,7 @@ public class EnigmaPrototype {
       return '?';
   }
   //Figures the value of the letter
-  public int LetterValues2(char c) {
+  public int valueToLetter(char c) {
     if (c == ' ') {
       return 0;
     } else if (c == 'A') {
@@ -149,11 +149,11 @@ public class EnigmaPrototype {
     //Prints the letter of the value
     System.out.print("Enter number from 0-29: ");
     number = scanner.nextInt();
-    System.out.print(LetterValues1(number));
+    System.out.print(letterToValue(number));
     scanner.nextLine();
     //Prints the value of the letter
     System.out.print("\nEnter a letter: ");
     c = scanner.nextLine().charAt(0);
-    System.out.print(LetterValues2(c));
+    System.out.print(valueToLetter(c));
   }
 }
