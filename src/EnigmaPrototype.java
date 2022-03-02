@@ -2,18 +2,19 @@ import java.util.Scanner;
 
 public class EnigmaPrototype {
 
-  int number;
-  char c;
+  Scanner scanner = new Scanner(System.in);
+  String questionForUser = " ";
+  boolean isPlaying;
 
   public static void main(String[] args) {
     EnigmaPrototype demo = new EnigmaPrototype();
-    demo.letterToValue(0);
-    demo.valueToLetter('A');
+    demo.valueToLetter(0);
+    demo.letterToValue('A');
     demo.userInput();
   }
 
   //Figures the letter of the value
-  public char letterToValue(int number) {
+  public char valueToLetter(int number) {
     if (number == 0) {
       return ' ';
     } else if (number == 1) {
@@ -77,8 +78,9 @@ public class EnigmaPrototype {
     } else
       return '?';
   }
+
   //Figures the value of the letter
-  public int valueToLetter(char c) {
+  public int letterToValue(char c) {
     if (c == ' ') {
       return 0;
     } else if (c == 'A') {
@@ -145,15 +147,55 @@ public class EnigmaPrototype {
   }
 
   public void userInput() {
-    Scanner scanner = new Scanner(System.in);
-    //Prints the letter of the value
-    System.out.print("Enter number from 0-29: ");
-    number = scanner.nextInt();
-    System.out.print(letterToValue(number));
+    System.out.println("Do you want to encrypt or decrypt a message?");
+    questionForUser = scanner.nextLine();
+    if (questionForUser.equals("encrypt")) {
+      encryption();
+    }
+    if (questionForUser.equals("decrypt")) {
+      decryption();
+    }
+
+
+  }
+
+  public void encryption() {
+    System.out.print("Type your plaintext: ");
+    char[] plaintext = scanner.nextLine().toUpperCase().toCharArray();
+    char[] ciphertext = new char[plaintext.length];
+    System.out.print("Enter shift: ");
+    int shifts = scanner.nextInt();
+
+    for (int index = 0; index < plaintext.length; index++) {
+      char b = plaintext[index];
+      int newLetterValue = (letterToValue(b) + shifts);
+      ciphertext[index] = valueToLetter(newLetterValue);
+    }
+    System.out.println(ciphertext);
     scanner.nextLine();
-    //Prints the value of the letter
-    System.out.print("\nEnter a letter: ");
-    c = scanner.nextLine().charAt(0);
-    System.out.print(valueToLetter(c));
+    System.out.print("Type (1) for decryption and (2) for exit: ");
+    questionForUser = scanner.nextLine();
+    if (questionForUser.equals("1")) {
+      decryption();
+    } if (questionForUser.equals("2")) {
+      isPlaying = false;
+    }
+  }
+
+  public void decryption() {
+    System.out.print("Type your ciphertext: ");
+    char[] ciphertext = scanner.nextLine().toUpperCase().toCharArray();
+    char[] plaintext = new char[ciphertext.length];
+    System.out.print("Enter shift: ");
+    int shifts = scanner.nextInt();
+
+    for (int index = 0; index < ciphertext.length; index++) {
+      char b = ciphertext[index];
+      int newLetterValue = (letterToValue(b) - shifts);
+      plaintext[index] = valueToLetter(newLetterValue);
+    }
+    System.out.println(plaintext);
+    scanner.nextLine();
+    userInput();
   }
 }
